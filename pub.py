@@ -29,11 +29,10 @@ client.loop_start()
 
 while True:
         position = {
-        "drone_id" : client_id, 
-        "lat" : uniform(34.0000000, 36.0000000),
-        "long" : uniform(3.0000000, 4.0000000),
-        "time" : str(datetime.datetime.now())
+        "vehicle_id" : client_id, 
+        "lat" : str(uniform(34.0000000, 36.0000000)),
+        "lng" : str(uniform(3.0000000, 4.0000000)),
         }
-        client.publish(f"drone/position/{position['drone_id']}", json.dumps(position))
+        client.publish(f"vehicle/position/{position['vehicle_id']}", json.dumps(position))
         print("Just published " + json.dumps(position) + " to Topic POSITION")
-        time.sleep(1)
+        time.sleep(4)
