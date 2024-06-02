@@ -26,13 +26,17 @@ client.connect(mqtt_broker, mqtt_port)
 
 client.loop_start()
 
+minLatitude = 36.7;  
+maxLatitude = 36.8;  
+minLongitude = 3.0; 
+maxLongitude = 3.1; 
 
 while True:
         position = {
         "vehicle_id" : client_id, 
-        "lat" : str(uniform(34.0000000, 36.0000000)),
-        "lng" : str(uniform(3.0000000, 4.0000000)),
+        "lat" : str(uniform(minLatitude, maxLatitude)),
+        "lng" : str(uniform(minLongitude, maxLongitude)),
         }
         client.publish(f"vehicle/position/{position['vehicle_id']}", json.dumps(position))
         print("Just published " + json.dumps(position) + " to Topic POSITION")
-        time.sleep(4)
+        time.sleep(1)
